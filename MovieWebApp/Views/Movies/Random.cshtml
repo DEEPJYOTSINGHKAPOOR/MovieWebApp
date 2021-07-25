@@ -1,0 +1,27 @@
+﻿@model MovieWebApp.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    var movieTitleClassName = Model.Customers.Count > 5 ? "popular" : null;
+}
+
+
+@* can also give dynamic class names to html attribute.
+    *@
+
+<h2 class="@movieTitleClassName"> @Model.Movie.Name </h2>
+
+@if (Model.Customers.Count == 0)
+{
+                <text> No one has rented this moview before </text>
+}
+else {
+    <ul>
+        @foreach (var customer in Model.Customers) { 
+            <li> @customer.Name </li> 
+        }
+    </ul>
+}
